@@ -1,0 +1,278 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 50%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+#page-title {
+    margin-top: 0;
+}
+
+.nav {
+    padding: 5px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav a {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 1em;
+    margin: 0 15px;
+    padding: 5px 0;
+}
+
+.nav a:hover {
+    text-decoration: underline dashed;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 20px 0;
+    padding-top: 1em;
+    font-weight: normal;
+    text-align: center;
+}
+
+#content-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 20px 0;
+}
+
+#content-container > a, #content-container > pre {
+    color: white;
+    text-align: center;
+}
+
+.topic-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px;
+    row-gap: 1px;
+}
+
+.topic-list h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: normal;
+    align-self: start;
+    text-decoration: underline;
+}
+
+.topic-item {
+    width: 100%;
+}
+
+.topic-item a {
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.topic-item a:hover {
+    text-decoration: underline;
+}
+
+.loading {
+    align-self: center;
+    margin: 20px 0;
+}
+
+/* Estilos para el contenido Markdown renderizado */
+.markdown-content {
+    width: 100%;
+    line-height: 1.6;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4 {
+    font-weight: normal;
+}
+
+.markdown-content code {
+    background-color: #333;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.markdown-content pre {
+    background-color: #333;
+    padding: 15px;
+    overflow-x: auto;
+    border-radius: 3px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.markdown-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px 0;
+}
+
+.breadcrumb {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.breadcrumb a {
+    color: white;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    margin: 0 5px;
+}
+
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+    text-align: center;
+}
+
+.ascii-art {
+    margin: 20px 0;
+}
+
+.ascii-art pre {
+    font-family: monospace;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.code-block {
+    width: 100%;
+    margin: 15px 0;
+}
+
+.code-block pre {
+    background-color: #333;
+    padding: 15px;
+    overflow-x: auto;
+    border-radius: 3px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.code-block-header {
+    background-color: #444;
+    padding: 5px 10px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .nav {
+        gap: 10px;
+        align-items: center;
+    }
+
+    .nav a {
+        margin: 5px 0;
+    }
+}
+
+ .tree {
+     font-family: monospace;
+     font-size: 14px;
+     color: #0f0;
+     background: black;
+     padding: 1em;
+ }
+
+.tree ul {
+    list-style: none;
+    padding-left: 1em;
+    border-left: 1px dashed #0f0;
+}
+
+.tree li {
+    cursor: pointer;
+    user-select: none;
+    margin: 2px 0;
+}
+
+.tree li .toggle::before {
+    content: "▶ ";
+    display: inline-block;
+    width: 1em;
+}
+
+.tree li.open > .toggle::before {
+    content: "▼ ";
+}
+
+.tree li.file::before {
+    content: "📄 ";
+}
+
+.tree li.dir::before {
+    content: "📁 ";
+}
+
+/* Estilo general para scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar minimalista */
+::-webkit-scrollbar {
+    width: 6px; /* ancho del scrollbar vertical */
+    height: 6px; /* alto del scrollbar horizontal */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* sin fondo */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: white; /* color de la barra */
+    border-radius: 10px; /* esquinas redondeadas */
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ccc; /* un poco más gris al hacer hover */
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Página No Encontrada</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="nav" id="main-nav">
+  </div>
+
+  <div class="error-container">
+    <h1>Error</h1>
+    <div class="ascii-art">
+                <pre>
+██   ██  ██████  ██   ██
+██   ██ ██  ████ ██   ██
+███████ ██ ██ ██ ███████
+     ██ ████  ██      ██
+     ██  ██████       ██
+</pre>
+    </div>
+    <p>La página que buscas no existe, que sepamos...</p>
+    <p><a href="index.html">Volver a la página principal</a></p>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/file-loader.js"></script>
+<script src="js/navigation.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', async function() {
+    try {
+      const topicsStructure = await loadTopicsStructure();
+      await initNavigation(topicsStructure);
+    } catch (error) {
+      console.error('Error al inicializar la navegación:', error);
+    }
+  });
+</script>
+</body>
+</html>

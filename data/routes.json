@@ -1,0 +1,24 @@
+[
+  {
+    "label": "Inicio",
+    "reference": "/?path=",
+    "icon_src": "https://www.svgrepo.com/show/521703/home.svg"
+  },
+  {
+    "label": "Contribute",
+    "reference": "/pages/contribute.html"
+  },
+  {
+    "label": "GitHub",
+    "reference": "https://github.com/ndy7stillx86ihz/mataburros",
+    "icon_src": "https://www.svgrepo.com/show/343674/github.svg"
+  },
+  {
+    "label": "About",
+    "reference": "/pages/about.html"
+  },
+  {
+    "label": "Contact",
+    "reference": "/pages/contact.html"
+  }
+]
