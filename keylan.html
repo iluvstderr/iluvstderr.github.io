@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>dEbi hacEr MAs TesIs</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1.marquee {
+            font-size: 10rem;
+            white-space: nowrap;
+            position: absolute;
+            animation: moveLeftRight 10s linear infinite;
+            font-family: monospace;
+        }
+
+        @keyframes moveLeftRight {
+            0% {
+                left: -100%;
+                color: lime;
+            }
+            10% {
+                color: aqua;
+            }
+            20% {
+                color: yellow;
+            }
+            30% {
+                color: orange;
+            }
+            40% {
+                color: red;
+            }
+            50% {
+                color: purple;
+            }
+            60% {
+                color: blue;
+            }
+            70% {
+                color: pink;
+            }
+            80% {
+                color: green;
+            }
+            90% {
+                color: white;
+            }
+            100% {
+                color: rebeccapurple;
+                left: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1 class="marquee">DeBi hacEr MAs TesIs</h1>
+</body>
+</html>

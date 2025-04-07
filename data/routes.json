@@ -1,24 +1,30 @@
 [
   {
     "label": "Inicio",
-    "reference": "/?path=",
-    "icon_src": "https://www.svgrepo.com/show/521703/home.svg"
+    "reference": "/?path="
   },
   {
-    "label": "Contribute",
-    "reference": "/pages/contribute.html"
-  },
-  {
-    "label": "GitHub",
+    "label": "Blog Repo",
     "reference": "https://github.com/ndy7stillx86ihz/mataburros",
-    "icon_src": "https://www.svgrepo.com/show/343674/github.svg"
+    "icon_src": "/assets/outer-source.svg",
+    "props": {
+        "target": "_blank",
+        "rel": "noopener noreferrer"
+    }
   },
   {
-    "label": "About",
-    "reference": "/pages/about.html"
+    "label": "Contribuye",
+    "reference": "/pages/contribute.html",
+    "props": {
+      "disabled": true
+    }
   },
   {
-    "label": "Contact",
+    "label": "Contáctame",
     "reference": "/pages/contact.html"
+  },
+  {
+    "label": "Acerca de",
+    "reference": "/pages/about.html"
   }
 ]

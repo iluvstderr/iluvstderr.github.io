@@ -35,15 +35,47 @@ async function loadContent(path = '') {
                 </div>`;
             return;
         }
-        if (!node) throw new Error(`Ruta no encontrada: ${path}`);
+
+        if (!node) {
+            throw new Error(`Ruta no encontrada: ${path}`);
+        }
+
         if (node.type !== 'dir') {
             const mdFile = await loadMarkdownFile(node.download_url);
             contentContainer.innerHTML = `
-                <div class="markdown-content">
-                  ${renderMarkdown(mdFile)}
+                <div class="markdown-wrapper">
+                    <div class="top-nav">
+                        <a class="nav-link" href="?path=${path.split('/').slice(0, -1).join('/')}">← Volver al índice</a>
+                    </div>
+                    <div class="markdown-content" id="markdown-content">
+                        ${renderMarkdown(mdFile)}
+                    </div>
+                    <div class="bottom-nav" id="bottom-nav" style="display: none;">
+                        <a class="nav-link" href="#">↑ Volver arriba</a>
+                    </div>
                 </div>
-          `;
+            `;
             updateBreadcrumbs(path);
+
+            function handleScroll() {
+                const content = document.getElementById('markdown-content');
+                const bottomNav = document.getElementById('bottom-nav');
+                if (!content || !bottomNav) return;
+
+                const contentRect = content.getBoundingClientRect();
+                const contentVisible = contentRect.top >= 0 && contentRect.bottom <= window.innerHeight;
+                const scrolledPast = window.scrollY > content.offsetTop + content.offsetHeight * 0.6;
+
+                if (!contentVisible && scrolledPast) {
+                    bottomNav.style.display = 'block';
+                } else {
+                    bottomNav.style.display = 'none';
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll);
+            requestAnimationFrame(handleScroll); // primera verificación
+
         } else {
             let html = `<div class="topic-list">
                 <h2>Índice de /${path}</h2>
@@ -55,7 +87,7 @@ async function loadContent(path = '') {
                   <div class="topic-item">
                     • <a href="?path=${item.path}">${item.type === 'dir' ? item.name + '/' : item.name}</a>
                   </div>
-        `).join('')
+                `).join('')
                 : `<p>No hay contenido en este directorio.</p>`;
             html += '</div>';
             contentContainer.innerHTML = html;

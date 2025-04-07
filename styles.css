@@ -10,6 +10,12 @@ body {
     min-height: 100vh;
 }
 
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+    color: gray;
+}
+
 .container {
     width: 50%;
     max-width: 1200px;
@@ -18,6 +24,10 @@ body {
     flex-direction: column;
     align-items: center;
     flex: 1;
+}
+
+.text-container {
+    text-align: justify;
 }
 
 #page-title {
@@ -42,6 +52,34 @@ body {
 
 .nav a:hover {
     text-decoration: underline dashed;
+}
+
+.nav-link {
+    display: inline-block;
+    margin: 1em 0;
+    font-weight: bold;
+    text-decoration: none;
+    color: #007acc;
+}
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.markdown-wrapper {
+    padding: 0 1em;
+}
+
+.top-nav, .bottom-nav {
+    margin: 1em 0;
+    border-top: 1px solid #ccc;
+    padding-top: 1em;
+}
+
+.bottom-nav {
+    text-align: right;
+    border-top: none;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1em;
 }
 
 h1 {
@@ -214,50 +252,6 @@ h1 {
     }
 }
 
- .tree {
-     font-family: monospace;
-     font-size: 14px;
-     color: #0f0;
-     background: black;
-     padding: 1em;
- }
-
-.tree ul {
-    list-style: none;
-    padding-left: 1em;
-    border-left: 1px dashed #0f0;
-}
-
-.tree li {
-    cursor: pointer;
-    user-select: none;
-    margin: 2px 0;
-}
-
-.tree li .toggle::before {
-    content: "▶ ";
-    display: inline-block;
-    width: 1em;
-}
-
-.tree li.open > .toggle::before {
-    content: "▼ ";
-}
-
-.tree li.file::before {
-    content: "📄 ";
-}
-
-.tree li.dir::before {
-    content: "📁 ";
-}
-
-/* Estilo general para scroll suave */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Scrollbar minimalista */
 ::-webkit-scrollbar {
     width: 6px; /* ancho del scrollbar vertical */
     height: 6px; /* alto del scrollbar horizontal */
@@ -269,7 +263,7 @@ html {
 
 ::-webkit-scrollbar-thumb {
     background-color: white; /* color de la barra */
-    border-radius: 10px; /* esquinas redondeadas */
+    border-radius: 1px; /* esquinas redondeadas */
     transition: background-color 0.3s ease;
 }
 
