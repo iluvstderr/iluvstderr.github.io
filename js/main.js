@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const topicsStructure = await loadTopicsStructure();
         await initNavigation(topicsStructure);
         const urlParams = new URLSearchParams(window.location.search);
-        const path = topicsStructure.length === 1 ? topicsStructure[0].path : urlParams.get('path') || '';
-        urlParams.set('path', path);
+        const path = urlParams.get('path') || '';
         await loadContent(path);
     } catch (error) {
         console.error('Error al inicializar la aplicación:', error);
@@ -42,13 +41,14 @@ async function loadContent(path = '') {
 
         if (node.type !== 'dir') {
             const mdFile = await loadMarkdownFile(node.download_url);
+            const mdContent = renderMarkdown(mdFile);
             contentContainer.innerHTML = `
                 <div class="markdown-wrapper">
                     <div class="top-nav">
                         <a class="nav-link" href="?path=${path.split('/').slice(0, -1).join('/')}">← Volver al índice</a>
                     </div>
                     <div class="markdown-content" id="markdown-content">
-                        ${renderMarkdown(mdFile)}
+                        ${mdContent || '<p>No hay contenido en este archivo.</p>'}
                     </div>
                     <div class="bottom-nav" id="bottom-nav" style="display: none;">
                         <a class="nav-link" href="#">↑ Volver arriba</a>
