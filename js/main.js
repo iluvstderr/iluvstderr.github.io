@@ -26,11 +26,14 @@ async function loadContent(path = '') {
             contentContainer.innerHTML = `
                 <div class="topic-list">
                   <h2>Índice de /</h2>
-                  ${topicsStructure.map(cat => `
-                    <div class="topic-item">
-                      • <a href="?path=${cat.path}">${cat.type === 'dir' ? cat.name + '/' : cat.name}</a>
-                    </div>
-                  `).join('')}
+                  ${topicsStructure
+                    .map(file => `
+                        <div class="topic-item">
+                            <a href="?path=${file.path}">
+                               • ${file.type === 'dir' ? file.name + '/' : file.name}
+                            </a>
+                        </div>
+                      `).join('')}
                 </div>`;
             return;
         }

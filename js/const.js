@@ -5,3 +5,8 @@ const CONTENTS_URL = `https://raw.githubusercontent.com/${USERNAME}/${REPO_NAME}
 const CACHE_KEY = `${REPO_NAME}_tree`;
 const CACHE_TIME_KEY = `${REPO_NAME}_tree_time`;
 const CACHE_LIFETIME = 1000 * 60 * 60 * 24; // 1 día
+const RESERVED_WORDS = [
+    "assets",
+    "README.md",
+    "LICENSE",
+]

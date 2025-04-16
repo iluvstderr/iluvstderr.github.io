@@ -34,7 +34,7 @@ async function fetchDirectory(path = "") {
                 children: children
             };
         } else {
-            if (item.name.startsWith("README") || item.name.startsWith("LICENSE")) {
+            if (RESERVED_WORDS.includes(item.name)) {
                 return null;
             }
             return {
