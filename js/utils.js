@@ -15,3 +15,8 @@ function getMarkdownTitle(md) {
 function getExtension(fileName) {
     return fileName.split('/').pop().split('.').pop();
 }
+
+function getParentPath(currentPath) {
+    const parts = currentPath.split('/').filter(Boolean);
+    return parts.slice(0, parts.length - 1).join('/') || '';
+}

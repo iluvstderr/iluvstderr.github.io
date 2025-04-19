@@ -27,6 +27,7 @@ async function loadContent(path = '') {
                 <div class="topic-list">
                   <h2>Índice de /</h2>
                   ${topicsStructure
+                    .filter(file => !RESERVED_WORDS.includes(file.name))
                     .map(file => `
                         <div class="topic-item">
                             <a href="?path=${file.path}">
@@ -42,7 +43,7 @@ async function loadContent(path = '') {
             throw new Error(`Ruta no encontrada: ${path}`);
         }
 
-        if (node.type !== 'dir') {
+        if (node.type === 'file') {
             const mdFile = await loadMarkdownFile(node.download_url);
             const mdContent = renderMarkdown(mdFile);
             contentContainer.innerHTML = `
@@ -86,7 +87,8 @@ async function loadContent(path = '') {
                   • <a href="?path=${path.split('/').slice(0, -1).join('/')}">../</a>
                 </div>`;
             html += node.children && node.children.length
-                ? node.children.map(item => `
+                ? node.children.filter(item => !RESERVED_WORDS.includes(item.name))
+                                .map(item => `
                   <div class="topic-item">
                     • <a href="?path=${item.path}">${item.type === 'dir' ? item.name + '/' : item.name}</a>
                   </div>

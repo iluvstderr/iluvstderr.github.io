@@ -1,7 +1,7 @@
 async function loadTopicsStructure() {
     const now = Date.now();
-    const cached = localStorage.getItem(CACHE_KEY);
-    const cachedTime = localStorage.getItem(CACHE_TIME_KEY);
+    const cached = sessionStorage.getItem(CACHE_KEY);
+    const cachedTime = sessionStorage.getItem(CACHE_TIME_KEY);
 
     if (cached && cachedTime && now - cachedTime < CACHE_LIFETIME) {
         return JSON.parse(cached);
@@ -9,8 +9,8 @@ async function loadTopicsStructure() {
 
     try {
         const tree = await fetchDirectory();
-        localStorage.setItem(CACHE_KEY, JSON.stringify(tree));
-        localStorage.setItem(CACHE_TIME_KEY, now);
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify(tree));
+        sessionStorage.setItem(CACHE_TIME_KEY, now.toString());
         return tree;
     } catch (err) {
         console.error("Error cargando estructura:", err);
@@ -19,6 +19,9 @@ async function loadTopicsStructure() {
 }
 
 async function fetchDirectory(path = "") {
+    // TODO: Puede que en un futuro se demore demasiado, actualmente se se le hace request
+    //        recursivamente a cada uno de los dirs del repo, debo establecer un limite de
+    //        o ver que medida tomo para optimizar y salir del O(n), al menos luchar por O(log(n))
     const response = await fetch(`${API_URL}${path}`);
     if (!response.ok) throw new Error(`Error en ${path}: ${response.statusText}`);
 
@@ -34,9 +37,6 @@ async function fetchDirectory(path = "") {
                 children: children
             };
         } else {
-            if (RESERVED_WORDS.includes(item.name)) {
-                return null;
-            }
             return {
                 name: item.name,
                 path: item.path,
@@ -51,7 +51,7 @@ async function loadMarkdownFile(url) {
     try {
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(`Error al cargar el archivo Markdown: ${response.statusText}`);
+            throw new Error(`Error al cargar el archivo: ${response.statusText}`);
         }
 
         const rawResponse = await response.text();
