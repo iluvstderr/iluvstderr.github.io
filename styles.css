@@ -159,6 +159,11 @@ h1 {
     background-color: #333;
     padding: 2px 4px;
     border-radius: 3px;
+    color: #e6ffd6;
+}
+
+.markdown-content a {
+    text-decoration: none;
 }
 
 .markdown-content pre {
