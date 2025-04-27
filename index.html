@@ -14,7 +14,7 @@
         </div>
 
         <div id="content-container">
-            <div class="loading">Cargando contenido...</div>
+            <div class="loading" id="loading-indicator">Cargando contenido...</div>
         </div>
     </div>
 
@@ -23,6 +23,19 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/config.js"></script>
+    <script>
+        const loadingIndicator = document.getElementById('loading-indicator');
+        if (loadingIndicator) {
+            const messages = LOADING_MSGS;
+
+            function changeMessage() {
+                loadingIndicator.textContent = messages[Math.floor(Math.random() * messages.length)];
+                setTimeout(changeMessage, Math.random() * 1500 + 300);
+            }
+
+            changeMessage();
+        }
+    </script>
     <script src="js/utils.js"></script>
     <script src="js/file-loader.js"></script>
     <script src="js/markdown-renderer.js"></script>

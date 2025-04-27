@@ -5,7 +5,7 @@ async function initNavigation() {
     navContainer.innerHTML = '';
 
     try {
-        const navData = await fetch("/data/routes.json").then(res => res.json());
+        const navData = await fetch("/data/navbar-elements.json").then(res => res.json());
         const SEPARATOR = ' . ';
         let navLinks = `<span class="separator">${SEPARATOR}</span>`;
         navData.forEach(nav => {

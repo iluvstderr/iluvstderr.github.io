@@ -46,14 +46,14 @@ a.disabled {
 
 .nav a {
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
     text-underline-offset: 1em;
     margin: 0 15px;
     padding: 5px 0;
 }
 
 .nav a:hover {
-    text-decoration: underline dashed;
+    text-decoration: underline dotted;
 }
 
 .nav-link {

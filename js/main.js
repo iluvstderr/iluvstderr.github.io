@@ -102,11 +102,9 @@ async function loadContent(path = '') {
         hljs.highlightAll();
 
     } catch (error) {
-        console.error('Error al cargar el contenido:', error);
         contentContainer.innerHTML = `
           <div class="error">
-            <h2>Error al cargar el contenido</h2>
-            <p>${error.message}</p>
+            <h2>Error al cargar el contenido, busca en otro lado mejor.</h2>
           </div>
         `;
     }

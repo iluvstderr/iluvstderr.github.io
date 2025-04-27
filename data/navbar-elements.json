@@ -1,5 +1,13 @@
 [
   {
+    "label": "↻",
+    "reference": "#reloadingggg",
+    "props": {
+      "onclick": "sessionStorage.clear(); const scrollY = window.scrollY; location.reload(); window.scrollTo(0, scrollY);",
+      "style": "text-decoration: none;"
+    }
+  },
+  {
     "label": "Inicio",
     "reference": "/?path="
   },
